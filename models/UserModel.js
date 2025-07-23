@@ -14,6 +14,8 @@ module.exports = (sequelize, Sequelize) => {
             email: {
                 type: Sequelize.STRING,
                 allowNull: false,
+                unique: true,
+                isEmail: true,
             },
             number: {
                 type: Sequelize.STRING,
@@ -28,12 +30,12 @@ module.exports = (sequelize, Sequelize) => {
         }
     );
 
-    UserModel.associate = (models) =>{
-        UserModel.hasMany(models.post, {
-            foreignKey: 'userId',
-        }
-        )
-    }
+    // UserModel.associate = (models) =>{
+    //     UserModel.hasMany(models.post, {
+    //         foreignKey: 'userId',
+    //     }
+    //     )
+    // }
 
     // UserModel.sync({alter:true});
     return UserModel;
